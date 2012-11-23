@@ -1,0 +1,76 @@
+function Projection(columns, input) {
+    this.columns = columns;
+    this.input = input;
+
+    this.setChildren([this.input]);
+
+    this.kind = Projection;
+
+    this.getColumnsParam = function() {
+        return this.columns;
+    }
+
+    this.setColumnsParam = function(col) {
+        this.columns = col;
+    }
+
+    this.getName = function() {
+        return this.input.getName();
+    }
+
+    this.getColumns = function() {
+        return this.columns.split(",");
+    }
+    this.setColumns = null;
+
+    this.getResult = function() {
+        var rel = this.input.getResult();
+        var cols = this.input.getColumns();
+        var pcols = this.columns.split(",");
+        var result = [];
+
+        // fix columns
+        var fixedcols = [];
+        pcols.each(function(c) {
+            fixedcols.push(c.strip());
+
+            if (cols.indexOf(c) < 0) {
+                throw "Eine oder mehrere Spalten die projeziert werden sollen existieren nicht, insbesondere \"" + c + "\"";
+            }
+        });
+        pcols = fixedcols;
+
+        var dupeMap = new Hash();
+        // assemble result
+        rel.each(function(row) {
+            var newrow = [];
+            pcols.each(function(pcol) {
+                newrow.push(row[cols.indexOf(pcol)]);
+            });
+
+            // do not add anything twice!
+            if (!dupeMap.get(newrow.toJSON())) {
+                result.push(newrow);
+                dupeMap.set(newrow.toJSON(), true);
+            }
+        });
+
+        return result;
+    }
+
+    this.copy = function() {
+        return new Projection(this.columns, this.input.copy());
+    }
+
+    this.toHTML = function() {
+        var display = '(';
+        display += latex("\\Pi");
+        display += '<span style=\'font-size:10pt; vertical-align: bottom\'>' + this.columns + "</span> " + this.input.toHTML() + ")";
+        return display;
+    }
+
+    this.toLatex = function() {
+        return "(\\Pi_{" + this.columns + "}" + this.input.toLatex() + ")";
+    }
+}
+Projection.prototype = new Relation;
