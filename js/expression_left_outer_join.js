@@ -16,7 +16,8 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function LeftOuterJoin(input1, input2) {
-    var symbol = "\\hspace{1ex}{\\mathrel{\\stackrel{\\rule[0.52ex]{0.50ex}{0.10ex}}{\\rule[0ex]{0.50ex}{0.10ex}}\\hspace{-0.75ex}\\mathord{\\bowtie}\\hspace{1ex} ";
+    //var symbol = "\\hspace{1ex}{\\mathrel{\\stackrel{\\rule[0.52ex]{0.50ex}{0.10ex}}{\\rule[0ex]{0.50ex}{0.10ex}}\\hspace{-0.75ex}\\mathord{\\bowtie}\\hspace{1ex} ";
+	var symbol = "\\unicode{x27d5}";
     this.setChildren([input1, input2]);
 
     this.base = Join;

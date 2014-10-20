@@ -64,7 +64,7 @@ function Selection(condition, input) {
     }
 
     this.toLatex = function() {
-        return "(\\sigma_{" + this.condition.toLatex() + "}" + this.input.toLatex() + ")";
+        return "\\sigma_{" + this.condition.toLatex() + "}" + this.input.toLatex() + "";
     }
 }
 Selection.prototype = new Relation();

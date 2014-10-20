@@ -7,11 +7,28 @@
     <title>
       IRA - Interaktive Relationale Algebra ;)
     </title>
+	  
+	  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  	tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+	jax: ["input/TeX","output/HTML-CSS"],
+	TeX: {
+    	extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  	},
+	"HTML-CSS": {
+		preferredFont: "STIX",
+		webFont: "STIX-Web",
+		imageFont: "STIX-Web"
+  	}
+	});
+</script>
+	  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	  <!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>-->
+		  
+		
     
-        <script src="js/block.js" type="text/javascript" charset="utf-8">
-    </script>
-        <script src="js/relation.js" type="text/javascript" charset="utf-8">
-    </script>
+	  <script src="js/block.js" type="text/javascript" charset="utf-8"></script>
+	  <script src="js/relation.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/data_relation.js" type="text/javascript" charset="utf-8">
 </script>
     <script src="js/selection.js" type="text/javascript" charset="utf-8">
@@ -87,6 +104,7 @@
     </style>
   </head>
   <body>
+	
     <!--<h2> Editierbereich 
       <span style="color: darkgreen; font-size:80%">
       (<a target="_NEW" href="movie1.mov" style="color: darkgreen; ">Lehrvideo (Quicktime, VLC), am besten Rechtklick, speichern.</a>)      
@@ -122,10 +140,10 @@
       <div id="tab1" class="toolbox toolbox_expressions">
         <ul style="float:left;">
           <li>
-            <a href="javascript:;" onclick="addSelection()"><img src="null" border="0" alt="mathtex:\sigma" /> - Selektion einsetzen</a>
+            <a href="javascript:;" onclick="addSelection()">$\large{\sigma}$ - Selektion einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addProjection(window.prompt('Spalten? (Spalten mit Komma getrennt angeben, Beispiel PersNr,Name,Raum)'))"><img src="null" border="0" alt="mathtex:\Pi" /> - Projektion einsetzen</a>
+            <a href="javascript:;" onclick="addProjection(window.prompt('Spalten? (Spalten mit Komma getrennt angeben, Beispiel PersNr,Name,Raum)'))">$\large{\Pi}$ - Projektion einsetzen</a>
           </li>
           <li>
             <script type="text/javascript">
@@ -135,68 +153,68 @@
                 renameHelp += "Beispiel: ProfName<-Name,Hierarchieebene<-Rang\n";
                 renameHelp += "ACHTUNG: Groß- und Kleinschreibung ist wichtig!!";
             //]]>
-            </script> <a href="javascript:;" onclick="addRename(prompt(renameHelp))"><img src="null" border="0" alt="mathtex:\rho" /> - Umbenennung einsetzen</a>
+            </script> <a href="javascript:;" onclick="addRename(prompt(renameHelp))">$\large{\rho}$ - Umbenennung einsetzen</a>
           </li>
           <li style="margin-top:15px;">
-            <a href="javascript:;" onclick="addMinus()"><img src="null" border="0" alt="mathtex:\setminus" /> - Minus einsetzen</a>
+            <a href="javascript:;" onclick="addMinus()">$\large{\setminus}$ - Minus einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addUnion()"><img src="null" border="0" alt="mathtex:\cup" /> - Vereinigung einsetzen</a>
+            <a href="javascript:;" onclick="addUnion()">$\large{\cup}$ - Vereinigung einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addIntersection()"><img src="null" border="0" alt="mathtex:\cap" /> - Schnittmenge einsetzen</a>
+            <a href="javascript:;" onclick="addIntersection()">$\large{\cap}$ - Schnittmenge einsetzen</a>
           </li>
         </ul>
         <ul style="float:left;">
           <li>
-            <a href="javascript:;" onclick="addCrossproduct()"><img src="null" border="0" alt="mathtex:\times" /> - Kreuzprodukt einsetzen</a>
+            <a href="javascript:;" onclick="addCrossproduct()">$\large{\times}$ - Kreuzprodukt einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addJoin()"><img src="null" border="0" alt="mathtex:\bowtie" /> - Natürlicher Join einsetzen</a>
+            <a href="javascript:;" onclick="addJoin()">$\large{\bowtie}$ - Natürlicher Join einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionalJoin()"><img src="null" border="0" alt="mathtex:\bowtie_\Theta" /> - Allgemeiner Join einsetzen</a>
+            <a href="javascript:;" onclick="addConditionalJoin()">$\large{\bowtie_\Theta}$ - Allgemeiner Join einsetzen</a>
           </li>
           <!--<li>
             <a href="javascript:;" onclick="addOuterJoin()"><img src="null" border="0" alt="mathtex:{\mathrel{\stackrel{\rule[0.52ex]{0.50ex}{0.10ex}}{\rule[0ex]{0.50ex}{0.10ex}}\hspace{-0.75ex}\mathord{\bowtie}\hspace{-0.1ex}{\mathrel{\stackrel{\rule[0.52ex]{0.50ex}{0.10ex}}{\rule[0ex]{0.50ex}{0.10ex}}\hspace{-0.7ex}}" /> - Outer Join einsetzen</a>
           </li>-->
           <li>
-            <a href="javascript:;" onclick="addLeftOuterJoin()"><img src="null" border="0" alt="mathtex:{\mathrel{\stackrel{\rule[0.52ex]{0.50ex}{0.10ex}}{\rule[0ex]{0.50ex}{0.10ex}}\hspace{-0.75ex}\mathord{\bowtie}" /> - Left Outer Join einsetzen</a>
+            <a href="javascript:;" onclick="addLeftOuterJoin()">$\large{\unicode{x27d5}}$ - Left Outer Join einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addRightOuterJoin()"><img src="null" border="0" alt="mathtex:{\mathrel{\mathord{\bowtie}\hspace{-0.1ex}{\mathrel{\stackrel{\rule[0.52ex]{0.50ex}{0.10ex}}{\rule[0ex]{0.50ex}{0.10ex}}\hspace{-0.7ex}}" />- Right Outer Join einsetzen</a>
+            <a href="javascript:;" onclick="addRightOuterJoin()">$\large{\unicode{x27d6}}$ - Right Outer Join einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addLeftSemiJoin()"><img src="null" border="0" alt="mathtex:\ltimes" /> - Left Semi Join einsetzen</a>
+            <a href="javascript:;" onclick="addLeftSemiJoin()">$\large{\ltimes}$ - Left Semi Join einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addRightSemiJoin()"><img src="null" border="0" alt="mathtex:\rtimes" /> - Right Semi Join einsetzen</a>
+            <a href="javascript:;" onclick="addRightSemiJoin()">$\large{\rtimes}$ - Right Semi Join einsetzen</a>
           </li>
         </ul>
         <ul style="float:left;">
           <li>
-            <a href="javascript:;" onclick="addDataRelation(professoren)"><img src="null" border="0" alt="mathtex:Professoren" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(professoren)">$\large{Professoren}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(vorlesungen)"><img src="null" border="0" alt="mathtex:Vorlesungen" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(vorlesungen)">$\large{Vorlesungen}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(assistenten)"><img src="null" border="0" alt="mathtex:Assistenten" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(assistenten)">$\large{Assistenten}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(studenten)"><img src="null" border="0" alt="mathtex:Studenten" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(studenten)">$\large{Studenten}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(hoeren)"><img src="null" border="0" alt="mathtex:hoeren" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(hoeren)">$\large{hoeren}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(voraussetzen)"><img src="null" border="0" alt="mathtex:voraussetzen" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(voraussetzen)">$\large{voraussetzen}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(pruefen)"><img src="null" border="0" alt="mathtex:pruefen" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(pruefen)">$\large{pruefen}$ Relation einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addDataRelation(zehnkampf)"><img src="null" border="0" alt="mathtex:Zehnkampf" /> Relation einsetzen</a>
+            <a href="javascript:;" onclick="addDataRelation(zehnkampf)">$\large{Zehnkampf}$ Relation einsetzen</a>
           </li>
         </ul>
         <ul style="float:left" id="savelist">
@@ -209,33 +227,33 @@
       <div id="tab2" class="toolbox toolbox_conditions">
         <ul style="float:left">
           <li>
-            <a href="javascript:;" onclick="addConditionAnd()"><img src="null" border="0" alt="mathtex:Bedingung \wedge Bedingung" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionAnd()">$\large{Bedingung \wedge Bedingung}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionOr()"><img src="null" border="0" alt="mathtex:Bedingung \vee Bedingung" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionOr()">$\large{Bedingung \vee Bedingung}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionNot()"><img src="null" border="0" alt="mathtex:\neg Bedingung" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionNot()">$\large{\neg Bedingung}$ einsetzen</a>
           </li>
         </ul>
         <ul style="float:left">
           <li>
-            <a href="javascript:;" onclick="addConditionComparison('=')"><img src="null" border="0" alt="mathtex:Wert = Wert" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionComparison('=')">$\large{Wert = Wert}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionComparison('!=')"><img src="null" border="0" alt="mathtex:Wert \neq Wert" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionComparison('!=')">$\large{Wert \neq Wert}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionComparison('&lt;')"><img src="null" border="0" alt="mathtex:Wert &lt; Wert" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionComparison('&lt;')">$\large{Wert &lt; Wert}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionComparison('&gt;')"><img src="null" border="0" alt="mathtex:Wert &gt; Wert" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionComparison('&gt;')">$\large{Wert &gt; Wert}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionComparison('&lt;=')"><img src="null" border="0" alt="mathtex:Wert \leq Wert" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionComparison('&lt;=')">$\large{Wert \leq Wert}$ einsetzen</a>
           </li>
           <li>
-            <a href="javascript:;" onclick="addConditionComparison('&gt;=')"><img src="null" border="0" alt="mathtex:Wert \geq Wert" /> einsetzen</a>
+            <a href="javascript:;" onclick="addConditionComparison('&gt;=')">$\large{Wert \geq Wert}$ einsetzen</a>
           </li>
         </ul>
       </div><!-- tab 2 zu -->
@@ -256,7 +274,7 @@
 
     <div class="ui-widget-content ui-corner-all ui-widget ui-tabs" style="min-height: 65px">
       <div class="ui-widget-header ui-corner-all">
-        Ausdruck in <img src="null" alt="mathtex:\LaTeX" />: 
+        Ausdruck in $\large{\LaTeX}$: 
         <a href="javascript:;" onclick="reset()">(reset)</a>
         <a href="javascript:;" onclick="back()">(back)</a>
       </div>

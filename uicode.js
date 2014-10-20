@@ -391,6 +391,8 @@ function updateDisplay(reset) {
     highlightBlock(currentBlock);
 
     updateResult();
+	
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 }
 
 function updateResult() {
@@ -485,5 +487,6 @@ function latex(str) {
     if (str.length > 100) dpi = 120;
 
     //return ' <img border="0" src="http://www.mathtran.org/cgi-bin/toy/?tex='+str+'" alt="'+str+'"/> ';
-    return ' <img border="0" src="http://dbkemper4-vm10.informatik.tu-muenchen.de/~muehe/cgi-bin/mathtex.cgi?' + encodeURIComponent('\\gammacorrection{.9}\\png\\dpi{' + dpi + '}' + s) + '" alt="' + escape(s) + '"/> ';
+    //return ' <img border="0" src="http://dbkemper4-vm10.informatik.tu-muenchen.de/~muehe/cgi-bin/mathtex.cgi?' + encodeURIComponent('\\gammacorrection{.9}\\png\\dpi{' + dpi + '}' + s) + '" alt="' + escape(s) + '"/> ';
+	return "<span>$" + str + "$</span>";
 }
