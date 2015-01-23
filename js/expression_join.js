@@ -107,13 +107,31 @@ function Join(input1, input2) {
         });
 
         // right outer join addon
+		var columns = this.getColumns();
         if (this.rightOuter) {
             rel2.each(function(row2, nr) {
                 if (!rights_added.get(nr)) {
-                    var newrow = row2.clone();
-                    for (i = 0; i < col1.length - joincolumns.length; i++) {
-                        newrow.unshift(null);
+                    var newrow = [];
+					// add left-hand columns
+					for (i = 0; i < col1.length; i++) {
+						if (joincolumns.indexOf(col1[i]) < 0) {
+                            newrow.push(null);
+                        } else {
+							newrow.push(row2[col2.indexOf(col1[i])]);
+						}
                     }
+					// add right-hand columns
+					for (i = 0; i < col2.length; i++) {
+						console.log(col2[i] + " " + joincolumns.indexOf(col2[i]));
+						if (joincolumns.indexOf(col2[i]) < 0) {
+							newrow.push(row2[i]);
+                        } else {
+							// already added
+						}
+                    }	
+                    /*for (i = 0; i < col1.length - joincolumns.length; i++) {
+                        newrow.unshift(null);
+                    }*/
                     result.push(newrow);
                 }
             });
