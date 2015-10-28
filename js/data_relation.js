@@ -15,10 +15,11 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-function DataRelation(name, columns, data) {
+function DataRelation(name, columns, data, expr) {
     this.name = name;
     this.columns = columns;
     this.data = data;
+    this.expression = expr;
 
     this.copy = function() {
         return new DataRelation(name, columns, data);
@@ -39,11 +40,11 @@ function DataRelation(name, columns, data) {
     }
 
     this.toHTML = function() {
-        return latex(this.name);
+        return latex(this.toLatex());
     }
 
     this.toLatex = function() {
-        return this.name;
+        return showFull && this.expression != undefined ? this.expression.toLatex() : this.name;
     }
 }
 DataRelation.prototype = new Relation;
