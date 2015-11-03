@@ -28,6 +28,11 @@ function reset() {
 }
 
 function save(name) {
+	if(name == null)
+		return;
+	name = name.trim();
+	if(name.length == 0)
+		return;
     saves.set(name,
 		new DataRelation(
 			name,
