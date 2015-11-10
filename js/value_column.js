@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -28,11 +28,11 @@ function ValueColumn(col) {
         // currentRow needs to be filled before this is eval'd
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         return this.column;
     }
 
-    this.toLatex = function() {
+    this.toLatex = function(options) {
         return '\\textrm{' + this.column.gsub("_", "\\_") + '}';
     }
 }

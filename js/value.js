@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -27,13 +27,13 @@ function Value() {
         //throw "Der Ausdruck ist nicht vollständig definiert, es fehlt ein Wert.";
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '<a id="block_' + this.blockId + '" class="block" href="javascript:;" ' +
         'onclick="editExpression(getBlock(' + this.blockId + '));">Wert</a> ';
         return display;
     }
 
-    this.toLatex = function() {
+    this.toLatex = function(options) {
         return "?";
     }
 }

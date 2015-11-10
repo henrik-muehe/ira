@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -29,14 +29,14 @@ function OuterJoin(input1, input2) {
         return new OuterJoin(this.input1.copy(), this.input2.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '';
-        display += '(' + this.getInput1().toHTML() + ") " + latex(symbol) + " (" + this.getInput2().toHTML() + ")";
+        display += '(' + this.getInput1().toHTML(options) + ") " + latex(symbol) + " (" + this.getInput2().toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(" + this.getInput1().toLatex() + symbol + this.getInput2().toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(" + this.getInput1().toLatex(options) + symbol + this.getInput2().toLatex(options) + ")";
     }
 }
 OuterJoin.prototype = new Join;

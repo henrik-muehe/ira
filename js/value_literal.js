@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -26,11 +26,11 @@ function ValueLiteral(lit) {
         return "\"" + this.literal + "\"";
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         return "'" + this.literal + "'";
     }
 
-    this.toLatex = function() {
+    this.toLatex = function(options) {
         return "'\\textrm{" + this.literal + "}'";
     }
 }

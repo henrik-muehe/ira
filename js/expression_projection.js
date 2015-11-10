@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -79,15 +79,15 @@ function Projection(columns, input) {
         return new Projection(this.columns, this.input.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '(';
         display += latex("\\Pi");
-        display += '<span style=\'font-size:10pt; vertical-align: bottom\'>' + this.columns + "</span> " + this.input.toHTML() + ")";
+        display += '<span style=\'font-size:10pt; vertical-align: bottom\'>' + this.columns + "</span> " + this.input.toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(\\Pi_{" + this.columns + "}" + this.input.toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(\\Pi_{" + this.columns + "}" + this.input.toLatex(options) + ")";
     }
 }
 Projection.prototype = new Relation;

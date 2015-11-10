@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -41,7 +41,7 @@ function ConditionalJoin(condition, input1, input2) {
         return columns;
     }
     this.setColumns = null;
-    
+
     this.getResult = function() {
         var cols = this.getColumns();
         var cond = this.condition.toJS();
@@ -69,14 +69,14 @@ function ConditionalJoin(condition, input1, input2) {
         return new ConditionalJoin(this.condition.copy(), this.input1.copy(), this.input2.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '';
-        display += '(' + this.input1.toHTML() + " " + latex("\\bowtie") + "<span style='font-size:10pt; vertical-align: bottom'>" + this.condition.toHTML() + "</span> " + " " + this.input2.toHTML() + ")";
+        display += '(' + this.input1.toHTML(options) + " " + latex("\\bowtie") + "<span style='font-size:10pt; vertical-align: bottom'>" + this.condition.toHTML(options) + "</span> " + " " + this.input2.toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(" + this.input1.toLatex() + "\\bowtie_{" + this.condition.toLatex() + "} " + this.input2.toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(" + this.input1.toLatex(options) + "\\bowtie_{" + this.condition.toLatex(options) + "} " + this.input2.toLatex(options) + ")";
     }
 }
 ConditionalJoin.prototype = new Relation;

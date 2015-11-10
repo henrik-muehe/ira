@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 debug = false;
 saves = new Hash();
 expressionHistory = new Array();
-showFull = false;
+inlineUserDefinedRelations = false;
 
 function reset() {
     blockid = 0;
@@ -353,7 +353,10 @@ function updateDisplay(reset) {
     display.innerHTML = "";
     var a = document.createElement('div');
     display.appendChild(a);
-    a.innerHTML = expression.toHTML();
+    var displayOptions = {
+      inline: inlineUserDefinedRelations
+    };
+    a.innerHTML = expression.toHTML(displayOptions);
 
     if (reset)
     resetCurrentBlock();
@@ -393,12 +396,12 @@ function updateDisplay(reset) {
     }
 
     // latex display
-    $("display_expression_latex").innerHTML = latex(expression.toLatex());
+    $("display_expression_latex").innerHTML = latex(expression.toLatex(displayOptions));
 
     highlightBlock(currentBlock);
 
     updateResult();
-	
+
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 }
 
@@ -498,7 +501,7 @@ function latex(str) {
 	return "<span>$" + str + "$</span>";
 }
 
-function toggleDisplayFull(){
-	showFull = !showFull;
+function toggleInlineUserDefinedRelations(){
+	inlineUserDefinedRelations = !inlineUserDefinedRelations;
 	updateDisplay(reset);
 }

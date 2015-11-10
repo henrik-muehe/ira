@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -40,14 +40,14 @@ function LeftSemiJoin(input1, input2) {
         return new LeftSemiJoin(this.input1.copy(), this.input2.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '';
-        display += '(' + this.input1.toHTML() + " " + latex("\\ltimes") + " " + this.input2.toHTML() + ")";
+        display += '(' + this.input1.toHTML(options) + " " + latex("\\ltimes") + " " + this.input2.toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(" + this.input1.toLatex() + "\\ltimes " + this.input2.toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(" + this.input1.toLatex(options) + "\\ltimes " + this.input2.toLatex(options) + ")";
     }
 }
 LeftSemiJoin.prototype = new Relation;

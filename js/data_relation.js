@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -22,7 +22,7 @@ function DataRelation(name, columns, data, expr) {
     this.expression = expr;
 
     this.copy = function() {
-        return new DataRelation(name, columns, data);
+        return new DataRelation(name, columns, data, expr);
     }
 
     this.getName = function() {
@@ -39,12 +39,17 @@ function DataRelation(name, columns, data, expr) {
         return this.data;
     }
 
-    this.toHTML = function() {
-        return latex(this.toLatex());
+    this.toHTML = function(options) {
+        return latex(this.toLatex(options));
     }
 
-    this.toLatex = function() {
-        return showFull && this.expression != undefined ? this.expression.toLatex() : this.name;
+    this.toLatex = function(options) {
+        if (options && options.inline) {
+          return this.expression != undefined ? this.expression.toLatex(options) : this.name;
+        } else {
+          return this.name;
+        }
     }
+
 }
 DataRelation.prototype = new Relation;

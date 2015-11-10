@@ -7,7 +7,7 @@
     <title>
       IRA - Interaktive Relationale Algebra ;)
     </title>
-	  
+
 	  <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
   	tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
@@ -24,9 +24,9 @@
 </script>
 	  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	  <!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>-->
-		  
-		
-    
+
+
+
 	  <script src="js/block.js" type="text/javascript" charset="utf-8"></script>
 	  <script src="js/relation.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/data_relation.js" type="text/javascript" charset="utf-8">
@@ -104,10 +104,10 @@
     </style>
   </head>
   <body>
-	
-    <!--<h2> Editierbereich 
+
+    <!--<h2> Editierbereich
       <span style="color: darkgreen; font-size:80%">
-      (<a target="_NEW" href="movie1.mov" style="color: darkgreen; ">Lehrvideo (Quicktime, VLC), am besten Rechtklick, speichern.</a>)      
+      (<a target="_NEW" href="movie1.mov" style="color: darkgreen; ">Lehrvideo (Quicktime, VLC), am besten Rechtklick, speichern.</a>)
       </span>
       </h2>-->
     <div id="display_expression" style="font-size: 16pt; font-family: courier;text-align:center; margin-top:30px"></div><!--<h2>
@@ -121,9 +121,9 @@
       });
     //]]>
     </script>
-    
+
     <div>
-    
+
     <div id="tabs" style="min-height:250px; margin-top:30px;">
       <ul>
         <li>
@@ -136,7 +136,7 @@
           <a href="#tab3"><span>für Werte</span></a>
         </li>
       </ul>
-      
+
       <div id="tab1" class="toolbox toolbox_expressions">
         <ul style="float:left;">
           <li>
@@ -274,16 +274,16 @@
 
     <div class="ui-widget-content ui-corner-all ui-widget ui-tabs" style="min-height: 65px">
       <div class="ui-widget-header ui-corner-all">
-        Ausdruck in $\large{\LaTeX}$: 
-        <a href="javascript:;" onclick="toggleDisplayFull()">(extend)</a>
+        Ausdruck in $\large{\LaTeX}$:
+        <a href="javascript:;" onclick="toggleInlineUserDefinedRelations()">(inline)</a>
         <a href="javascript:;" onclick="reset()">(reset)</a>
         <a href="javascript:;" onclick="back()">(back)</a>
       </div>
       <div class="ui-tabs-panel ui-widget-content" id="display_expression_latex"></div>
     </div>
-    
+
     <br />
-    
+
     <div class="ui-widget-content ui-corner-all ui-widget ui-tabs">
       <div class="ui-widget-header ui-corner-all">
         Ergebnis <a href="javascript:;" onclick="save(prompt('Name?'))" style="font-size: 11px;">(speichern)</a>
@@ -294,8 +294,8 @@
       </div>
     </div>
     </div>
-    
-    
+
+
     <script type="text/javascript">
 //<![CDATA[
 var newsid = 3;
@@ -318,24 +318,24 @@ if (c.lastNews != newsid || c.count != 0) {
 
     <div id="hilfe">
       <h2> Neuerung 17.11.2009, 20:28: Zurück Knopf </h2>
-      
+
       Der viel geforderte und zugegebenermaßen sehr wichtige Back Button ist jetzt da. Falls jemand wissen will, wieso dieser so sau schwer zu erzeugen ist, melde er sich schriftlich oder in einer Übung bei mir ;-)
-      
+
       <h2> Neuerung 17.11.2009, 20:01: Diverses </h2>
-      
+
       In Input Dialogen abbrechen geht jetzt. LaTeX Ausdrücke mit einem Unterstrich in einer Bedingung gehen jetzt. Siehe auch die Bugs Seite. Danke an alle "Helfer".
-      
+
       <h2> Lehrvideo </h2>
       Du kannst mit Quicktime / VLC <a href="movie1.mov" target="NEW">hier</a> ein kurzes Video zur Bedienung ansehen!
-      
+
       <br /><hr />
-      Du siehst diesen Dialog noch 
+      Du siehst diesen Dialog noch
       <script type="text/javascript">
         document.write(c.count);
       </script>
       mal.
     </div>
-    
+
     <script type="text/javascript">
 //<![CDATA[
 if (false && showNews) {
@@ -354,7 +354,7 @@ reset();
 updateDisplay(true);
 //]]>
     </script>
-    
+
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -365,15 +365,15 @@ updateDisplay(true);
   ga('send', 'pageview');
 
 </script>
-    
-    
-    
+
+
+
     <hr />
     <p>
       <a href="mailto:db@muehe.org">Henrik Mühe</a>
       <a href="http://www-db.in.tum.de/~muehe/">homepage</a>, 2009-2012
-      
-      - Bitte Bugs via <a href="https://github.com/harald-lang/ira/issues">GitHub</a> melden! 
+
+      - Bitte Bugs via <a href="https://github.com/harald-lang/ira/issues">GitHub</a> melden!
       - <a href="bugs.html">Bekannte Bugs</a>
 	<p>
 		<a href="http://www.mathjax.org">
@@ -382,8 +382,8 @@ updateDisplay(true);
 			border="0" alt="Powered by MathJax" />
 		</a>
 	</p>
-    
-        
-    
+
+
+
   </body>
 </html>
