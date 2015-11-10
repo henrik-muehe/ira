@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 debug = false;
 saves = new Hash();
 expressionHistory = new Array();
+showFull = false;
 
 function reset() {
     blockid = 0;
@@ -27,12 +28,18 @@ function reset() {
 }
 
 function save(name) {
+	if(name == null)
+		return;
+	name = name.trim();
+	if(name.length == 0)
+		return;
     saves.set(name,
-    new DataRelation(
-    name,
-    expression.getColumns(),
-    expression.getResult()
-    )
+		new DataRelation(
+			name,
+			expression.getColumns(),
+			expression.getResult(),
+			expression
+		)
     );
     reset();
 }
@@ -489,4 +496,9 @@ function latex(str) {
     //return ' <img border="0" src="http://www.mathtran.org/cgi-bin/toy/?tex='+str+'" alt="'+str+'"/> ';
     //return ' <img border="0" src="http://dbkemper4-vm10.informatik.tu-muenchen.de/~muehe/cgi-bin/mathtex.cgi?' + encodeURIComponent('\\gammacorrection{.9}\\png\\dpi{' + dpi + '}' + s) + '" alt="' + escape(s) + '"/> ';
 	return "<span>$" + str + "$</span>";
+}
+
+function toggleDisplayFull(){
+	showFull = !showFull;
+	updateDisplay(reset);
 }
