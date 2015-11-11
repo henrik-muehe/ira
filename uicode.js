@@ -344,8 +344,8 @@ function updateDisplay(reset) {
         var key = kvp.key;
         var a = document.createElement('li');
         list.appendChild(a);
-        a.innerHTML = '<a href="javascript:;" onclick="addDataRelation(saves.get(\'' + key + '\'))">' +
-        '<img border="0" src="http://www.mathtran.org/cgi-bin/toy/?tex=' + key + '" alt="' + key + '" /> Relation einsetzen  </a>';
+        a.innerHTML = '<a href="javascript:;" onclick="addDataRelation(saves.get(\'' + key + '\'))">'
+        + '$\\large{' + key + '}$ Relation einsetzen  </a>';
     });
 
     // update expression display
