@@ -219,6 +219,18 @@ function addMinus() {
     updateDisplay(true);
 }
 
+function addDivision() {
+    saveHistory();
+    var rel = wrapAroundCheck();
+    if (rel === null) return;
+    // not a Relation if this happens
+    Object.extend(currentBlock,
+    addBlock(new Division(
+    leftSide() ? addBlock(rel, true) : addBlock(new Relation()),
+    leftSide() ? addBlock(new Relation()) : addBlock(rel, true))));
+    updateDisplay(true);
+}
+
 function addIntersection() {
     saveHistory();
     var rel = wrapAroundCheck();
