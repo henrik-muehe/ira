@@ -11,9 +11,23 @@ function Division(input1, input2) {
     this.setName = null;
 
     this.validate = function() {
-        if (this.input1.getColumns() == null || this.input2.getColumns() == null) {
-            throw "Es fehlt mindestens eine Eingaberelation.";
+      var leftInputColumns = this.input1.getColumns();
+      var rightInputColumns = this.input2.getColumns()
+      if (leftInputColumns == null || rightInputColumns == null) {
+          throw "Es fehlt mindestens eine Eingaberelation.";
+      }
+
+      var commonColumnCount = 0;
+      for (var i = 0; i<rightInputColumns.length;i++) {
+        if (leftInputColumns.indexOf(rightInputColumns[i]) === -1) {
+          throw "Das Schema der rechten Eingaberelation ist keine (echte) Teilmenge des Schemas der linken Eingaberelation.";
+        } else {
+          commonColumnCount++;
         }
+      }
+      if (commonColumnCount === leftInputColumns.length) {
+        throw "Das Schema der rechten Eingaberelation ist keine (echte) Teilmenge des Schemas der linken Eingaberelation.";
+      }
     };
 
     this.getColumns = function() {
@@ -39,33 +53,19 @@ function Division(input1, input2) {
     this.setColumns = null;
 
     this.getResult = function() {
-
         this.validate();
-
         var cols = this.getColumns();
-
-        console.log(cols);
-
         var pro = new Projection(cols.toString(), this.input1);
-
         var cp = new Crossproduct(pro, this.input2);
-
         var namingCommand = "";
-
         var cpColumns = cp.getColumns();
-
         for (var i=0;i<cpColumns.length;i++) {
           namingCommand += cpColumns[i].split(".")[1] + "<-" + cpColumns[i] + ",";
         }
-
         var newNames = new Rename(namingCommand,cp);
-
         var min = new Minus(newNames, this.input1);
-
         var proj = new Projection(cols.toString(), min);
-
         min = new Minus(pro, proj);
-
         return min.getResult();
     };
 
