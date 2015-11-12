@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -127,5 +127,20 @@ var zehnkampf = new DataRelation(
 ["Behrenbruch",8126],
 ["Hardee",8671],
 ["Sebrle",8869]
+]
+);
+
+var zehnkampfd = new DataRelation(
+"ZehnkampfD",
+["Name","Disziplin","Punkte"],
+[
+  ["Bolt","100m",50],
+  ["Bolt","Weitsprung",50],
+  ["Eaton","100m",40],
+  ["Eaton","Weitsprung",60],
+  ["Suarez","100m",60],
+  ["Suarez","Weitsprung",60],
+  ["Behrenbruch","100m",30],
+  ["Behrenbruch","Weitsprung",50]
 ]
 );
