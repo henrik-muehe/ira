@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 debug = false;
 saves = new Hash();
 expressionHistory = new Array();
+inlineUserDefinedRelations = false;
 
 function reset() {
     blockid = 0;
@@ -27,12 +28,18 @@ function reset() {
 }
 
 function save(name) {
+	if(name == null)
+		return;
+	name = name.trim();
+	if(name.length == 0)
+		return;
     saves.set(name,
-    new DataRelation(
-    name,
-    expression.getColumns(),
-    expression.getResult()
-    )
+		new DataRelation(
+			name,
+			expression.getColumns(),
+			expression.getResult(),
+			expression
+		)
     );
     reset();
 }
@@ -212,6 +219,18 @@ function addMinus() {
     updateDisplay(true);
 }
 
+function addDivision() {
+    saveHistory();
+    var rel = wrapAroundCheck();
+    if (rel === null) return;
+    // not a Relation if this happens
+    Object.extend(currentBlock,
+    addBlock(new Division(
+    leftSide() ? addBlock(rel, true) : addBlock(new Relation()),
+    leftSide() ? addBlock(new Relation()) : addBlock(rel, true))));
+    updateDisplay(true);
+}
+
 function addIntersection() {
     saveHistory();
     var rel = wrapAroundCheck();
@@ -337,8 +356,8 @@ function updateDisplay(reset) {
         var key = kvp.key;
         var a = document.createElement('li');
         list.appendChild(a);
-        a.innerHTML = '<a href="javascript:;" onclick="addDataRelation(saves.get(\'' + key + '\'))">' +
-        '<img border="0" src="http://www.mathtran.org/cgi-bin/toy/?tex=' + key + '" alt="' + key + '" /> Relation einsetzen  </a>';
+        a.innerHTML = '<a href="javascript:;" onclick="addDataRelation(saves.get(\'' + key + '\'))">'
+        + '$\\large{' + key + '}$ Relation einsetzen  </a>';
     });
 
     // update expression display
@@ -346,7 +365,10 @@ function updateDisplay(reset) {
     display.innerHTML = "";
     var a = document.createElement('div');
     display.appendChild(a);
-    a.innerHTML = expression.toHTML();
+    var displayOptions = {
+      inline: inlineUserDefinedRelations
+    };
+    a.innerHTML = expression.toHTML(displayOptions);
 
     if (reset)
     resetCurrentBlock();
@@ -386,12 +408,12 @@ function updateDisplay(reset) {
     }
 
     // latex display
-    $("display_expression_latex").innerHTML = latex(expression.toLatex());
+    $("display_expression_latex").innerHTML = latex(expression.toLatex(displayOptions));
 
     highlightBlock(currentBlock);
 
     updateResult();
-	
+
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 }
 
@@ -489,4 +511,9 @@ function latex(str) {
     //return ' <img border="0" src="http://www.mathtran.org/cgi-bin/toy/?tex='+str+'" alt="'+str+'"/> ';
     //return ' <img border="0" src="http://dbkemper4-vm10.informatik.tu-muenchen.de/~muehe/cgi-bin/mathtex.cgi?' + encodeURIComponent('\\gammacorrection{.9}\\png\\dpi{' + dpi + '}' + s) + '" alt="' + escape(s) + '"/> ';
 	return "<span>$" + str + "$</span>";
+}
+
+function toggleInlineUserDefinedRelations(){
+	inlineUserDefinedRelations = !inlineUserDefinedRelations;
+	updateDisplay(reset);
 }

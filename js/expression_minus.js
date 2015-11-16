@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -22,17 +22,18 @@ function Minus(input1, input2) {
     this.setChildren([this.input1, this.input2]);
 
     this.validate = function() {
-        if (this.input1.getColumns() == null || this.input2.getColumns() == null) {
+      var leftInputColumns = this.input1.getColumns();
+      var rightInputColumns = this.input2.getColumns();
+        if (leftInputColumns == null || rightInputColumns == null) {
             throw "Es fehlt mindestens eine Eingaberelation.";
         }
 
-        if (this.input1.getColumns().length != this.input2.getColumns().length) {
+        if (leftInputColumns.length != rightInputColumns.length) {
             throw "Die Spaltenzahl und Namen der zwei Eingaberelationen müssen für Minus gleich sein!";
         }
 
-        cols2 = this.input2.getColumns();
-        this.input1.getColumns().each(function(c, nr) {
-            if (c != cols2[nr]) {
+        leftInputColumns.each(function(c, nr) {
+            if (c != rightInputColumns[nr]) {
                 throw "Die Spaltenzahl und Namen der zwei Eingaberelationen müssen für Minus gleich sein!";
             }
         });
@@ -85,14 +86,14 @@ function Minus(input1, input2) {
         return new Minus(this.input1.copy(), this.input2.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '';
-        display += '(' + this.input1.toHTML() + " " + latex("\\setminus") + " " + this.input2.toHTML() + ")";
+        display += '(' + this.input1.toHTML(options) + " " + latex("\\setminus") + " " + this.input2.toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(" + this.input1.toLatex() + "\\setminus " + this.input2.toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(" + this.input1.toLatex(options) + "\\setminus " + this.input2.toLatex(options) + ")";
     }
 }
 Minus.prototype = new Relation();

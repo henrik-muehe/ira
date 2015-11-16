@@ -40,14 +40,14 @@ function RightSemiJoin(input1, input2) {
         return new RightSemiJoin(this.input1.copy(), this.input2.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '';
-        display += '(' + this.input1.toHTML() + " " + latex("\\rtimes") + " " + this.input2.toHTML() + ")";
+        display += '(' + this.input1.toHTML(options) + " " + latex("\\rtimes") + " " + this.input2.toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(" + this.input1.toLatex() + "\\rtimes " + this.input2.toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(" + this.input1.toLatex(options) + "\\rtimes " + this.input2.toLatex(options) + ")";
     }
 }
 RightSemiJoin.prototype = new Relation;

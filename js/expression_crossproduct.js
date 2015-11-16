@@ -1,4 +1,4 @@
-/* 
+/*
 IRA - Interactive Relational Algebra Tool
 Copyright (C) 2010-2012 Henrik Mühe
 
@@ -54,13 +54,13 @@ function Crossproduct(input1, input2) {
 
     this.getResult = function() {
         this.checkValidity();
-        
+
         var rel1 = this.input1.getResult();
         var cols1 = this.input1.getColumns();
         var rel2 = this.input2.getResult();
         var cols2 = this.input2.getColumns();
         var result = [];
-        
+
         if (rel1.length * rel2.length > 2000) {
             throw "Das Kreuzprodukt ist zu groß, dein Browser würde abstürzen.";
         }
@@ -79,14 +79,14 @@ function Crossproduct(input1, input2) {
         return new Crossproduct(this.input1.copy(), this.input2.copy());
     }
 
-    this.toHTML = function() {
+    this.toHTML = function(options) {
         var display = '';
-        display += '(' + this.input1.toHTML() + " " + latex("\\times") + " " + this.input2.toHTML() + ")";
+        display += '(' + this.input1.toHTML(options) + " " + latex("\\times") + " " + this.input2.toHTML(options) + ")";
         return display;
     }
 
-    this.toLatex = function() {
-        return "(" + this.input1.toLatex() + "\\times " + this.input2.toLatex() + ")";
+    this.toLatex = function(options) {
+        return "(" + this.input1.toLatex(options) + "\\times " + this.input2.toLatex(options) + ")";
     }
 }
 Crossproduct.prototype = new Relation;
